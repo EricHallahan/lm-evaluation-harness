@@ -50,6 +50,7 @@ TASK_REGISTRY = {
 
     "pubmedqa" : pubmedqa.Pubmed_QA,
     "sciq" : sciq.SciQ,
+    "sciq_s": sciq.SciQ_shuffle,
 
     #"triviaqa": triviaqa.TriviaQA,
     "arc_easy": arc.ARCEasy,

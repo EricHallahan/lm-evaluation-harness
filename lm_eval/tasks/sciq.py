@@ -3,6 +3,7 @@ import json
 from ..utils import sh
 from lm_eval.base import MultipleChoiceTask, rf, mean
 import zipfile
+import random
 
 
 class SciQ(MultipleChoiceTask):
@@ -63,3 +64,9 @@ class SciQ(MultipleChoiceTask):
 
     def doc_to_text(self, doc):
         return "{}\n{}".format(doc["source"], doc["query"])
+
+class SciQ_shuffle(SciQ):
+    def doc_to_text(self, doc):
+        tokens = [token for token in doc["source"].replace(","," ").replace("?","").split(" ") if token!=""]
+        random.shuffle(tokens)
+        return "{}\n{}".format(" ".join(tokens) + "?", doc["query"])
